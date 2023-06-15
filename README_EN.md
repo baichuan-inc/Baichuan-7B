@@ -90,10 +90,10 @@ The final loss of the model is shown below：
 
 ## Chinese Benchmarks
 ### C-Eval
-[CEval](https://cevalbenchmark.com/index.html) is a comprehensive Chinese language models evaluation dataset, covering 52 subjects and four levels of difficulty. We used the dev set from this dataset as the source for few-shot learning and conducted a 5-shot test on the test set.
+[C-Eval](https://cevalbenchmark.com/index.html) is a comprehensive Chinese language models evaluation dataset, covering 52 subjects and four levels of difficulty. We used the dev set from this dataset as the source for few-shot learning and conducted a 5-shot test on the test set.
 
 
-Change OPENMODEL_PATH and CEVAL_DATA_PATH in evaluate_zh.py, corresponding to model directory and CEval dataset, and runing:
+Change OPENMODEL_PATH and CEVAL_DATA_PATH in evaluate_zh.py, corresponding to model directory and C-Eval dataset, and runing:
 ```shell
 shot=5  # few-shot
 gpu=0  # GPUid
