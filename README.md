@@ -24,7 +24,7 @@
 
 # 介绍
 
-baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约 1.2 万亿 tokens 上训练的70亿参数模型，支持中英双语，上下文窗口长度为4096。在标准的中文和英文权威benchmark（C-EVAL/MMLU）上均取得同尺寸最好的效果。
+baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约1.2万亿 tokens 上训练的70亿参数模型，支持中英双语，上下文窗口长度为4096。在标准的中文和英文权威 benchmark（C-EVAL/MMLU）上均取得同尺寸最好的效果。
 
 ## 数据
 
@@ -42,11 +42,11 @@ baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练
 * 我们使用了一个基于自动学习的数据权重策略，对不同类别的数据进行配比。
 
 ## 分词
-我们参考学术界方案使用SentencePiece中的byte pair encoding (BPE)作为分词算法，并且进行了以下的优化：
+我们参考学术界方案使用 SentencePiece 中的 byte pair encoding (BPE)作为分词算法，并且进行了以下的优化：
 1. 目前大部分开源模型主要基于英文优化，因此对中文语料存在效率较低的问题。我们使用2000万条以中英为主的多语言语料训练分词模型，显著提升对于中文的压缩率。
-2. 对于数学领域，我们参考了LLaMA和Galactica中的方案，对数字的每一位单独分开，避免出现数字不一致的问题，对于提升数学能力有重要帮助。
-3. 对于罕见字词（如特殊符号等），支持UTF-8-characters的byte编码，因此做到未知字词的全覆盖。 
-4. 我们分析了不同分词器对语料的压缩率，如下表，可见我们的分词器明显优于LLaMA, Falcon等开源模型，并且对比其他中文分词器在压缩率相当的情况下，训练和推理效率更高。
+2. 对于数学领域，我们参考了 LLaMA 和 Galactica 中的方案，对数字的每一位单独分开，避免出现数字不一致的问题，对于提升数学能力有重要帮助。
+3. 对于罕见字词（如特殊符号等），支持 UTF-8-characters 的 byte 编码，因此做到未知字词的全覆盖。 
+4. 我们分析了不同分词器对语料的压缩率，如下表，可见我们的分词器明显优于 LLaMA, Falcon 等开源模型，并且对比其他中文分词器在压缩率相当的情况下，训练和推理效率更高。
 
 | Model         | baichuan-7B | LLaMA | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
 |---------------|-------------|-------|--------|--------|---------|---------------|
@@ -54,19 +54,19 @@ baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练
 | Vocab Size    | 64000       | 32000 | 65024  | 50254  | 130344  | 106029        |
 
 ## 模型结构
-整体模型基于标准的Transformer结构，我们采用了和LLaMA一样的模型设计
+整体模型基于标准的 Transformer 结构，我们采用了和 LLaMA 一样的模型设计
 * 位置编码：[rotary-embedding](https://arxiv.org/abs/2104.09864) 是现阶段被大多模型采用的位置编码方案，具有更好的外延效果。虽然训练过程中最大长度为4096，但是实际测试中模型可以很好的扩展到5000个tokens上，如下图：
    <p align="center">
     <br>
     <img src="media/long-context-ppl.png" width="90%"/>
     <br>
      </p>
-* 激活层：SwiGLU, Feedforward变化为(8/3)倍的隐含层大小，即11008
+* 激活层：SwiGLU, Feedforward 变化为(8/3)倍的隐含层大小，即11008
 * Layer-Normalization: 基于[RMSNorm](https://arxiv.org/abs/1910.07467) 的Pre-Normalization
 
 ## 训练稳定性和吞吐
 我们在原本的LLaMA框架上进行诸多修改以提升训练时的吞吐，具体包括：
-1. 算子优化技术：采用更高效算子，如Flash-attention，NVIDIA apex的RMSNorm等。 
+1. 算子优化技术：采用更高效算子，如 Flash-attention，NVIDIA apex 的 RMSNorm 等。 
 2. 算子切分技术：将部分计算算子进行切分，减小内存峰值。 
 3. 混合精度技术：降低在不损失模型精度的情况下加速计算过程。 
 4. 训练容灾技术：训练平台和训练框架联合优化，IaaS+PaaS实现分钟级的故障定位和任务恢复。 
@@ -89,9 +89,9 @@ baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练
 
 ## 中文评测
 ### C-Eval
-[CEval数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为few-shot的来源，在test集上进行了5-shot测试。
+[CEval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为few-shot的来源，在test集上进行了 5-shot 测试。
 
-先修改evaluate_zh.py中的OPENMODEL_PATH和CEVAL_DATA_PATH两个值，分别是模型（文件夹）存放的路径和CEval数据集的路径。再执行下面的脚本。
+先修改 `evaluate_zh.py` 中的 OPENMODEL_PATH 和 CEVAL_DATA_PATH 两个值，分别是模型（文件夹）存放的路径和CEval数据集的路径。再执行下面的脚本。
 
 ```shell
 shot=5  # few-shot
@@ -164,12 +164,12 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 | Aquila-7B<sup>*</sup>               | 25.58           |
 | **baichuan-7B**        | **34.44**           |
 
-<sup>*</sup>其中Aquila模型来源于智源官方网站(https://model.baai.ac.cn/model-detail/100098) 仅做参考
+<sup>*</sup>其中 Aquila 模型来源于智源官方网站(https://model.baai.ac.cn/model-detail/100098) 仅做参考
 
 ## 英文榜单
 除了中文之外，我们也测试了模型在英文上的效果，[MMLU](https://arxiv.org/abs/2009.03300) 是包含57个多选任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。
 
-我们采用了[开源](https://github.com/hendrycks/test) 的评测方案，最终5-shot结果如下所示：
+我们采用了[开源](https://github.com/hendrycks/test) 的评测方案，最终 5-shot 结果如下所示：
 
 ### 结果
 
@@ -203,7 +203,7 @@ python evaluation/evaluate_mmlu.py -m /path/to/baichuan-7b
 
 ```
 
-其中在MMLU上57个任务的具体细指标如下图：
+其中在 MMLU 上57个任务的具体细指标如下图：
 <p align="center">
     <br>
     <img src="media/MMLU-57-tasks.png" width="90%"/>
@@ -219,7 +219,7 @@ python evaluation/evaluate_mmlu.py -m /path/to/baichuan-7b
 
 # 推理方法
 
-推理代码已经在[官方Huggingface库](https://huggingface.co/baichuan-inc/baichuan-7B) 
+推理代码已经在[官方 Huggingface 库](https://huggingface.co/baichuan-inc/baichuan-7B) 
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -238,13 +238,13 @@ print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
 pip install -r requirements.txt
 ```
 ## 准备数据
-用户将训练语料按总rank数的倍数均匀切分成多个UTF-8文本文件，放置在语料目录（默认为 `data_dir` ）下。各个rank进程将会读取语料目录下的不同文件，全部加载到内存后，开始后续训练过程。以上是简化的示范流程，建议用户在正式训练任务中，根据需求调整数据生产逻辑。
+用户将训练语料按总rank数的倍数均匀切分成多个 UTF-8 文本文件，放置在语料目录（默认为 `data_dir` ）下。各个rank进程将会读取语料目录下的不同文件，全部加载到内存后，开始后续训练过程。以上是简化的示范流程，建议用户在正式训练任务中，根据需求调整数据生产逻辑。
 
-## 下载tokenizer模型
-下载tokenizer模型文件 [tokenizer.model](https://huggingface.co/baichuan-inc/baichuan-7B/blob/main/tokenizer.model) ，放置在项目目录下。
+## 下载 tokenizer 模型
+下载 tokenizer 模型文件 [tokenizer.model](https://huggingface.co/baichuan-inc/baichuan-7B/blob/main/tokenizer.model) ，放置在项目目录下。
    
-## 配置DeepSpeed
-本示范代码采用DeepSpeed框架进行训练。用户需根据集群情况，修改 `config/hostfile` ，如果是多机多卡，需要修改ssh中各个节点的IP配置。具体可以参见DeepSpeed[官方说明](https://www.deepspeed.ai/) 。
+## 配置 DeepSpeed
+本示范代码采用 DeepSpeed 框架进行训练。用户需根据集群情况，修改 `config/hostfile` ，如果是多机多卡，需要修改 ssh 中各个节点的 IP 配置。具体可以参见DeepSpeed[官方说明](https://www.deepspeed.ai/) 。
 
 ## 执行训练
 ```python
