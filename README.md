@@ -24,7 +24,7 @@
 
 # 介绍
 
-Baichuan-7B是由百川智能开发的一个开源的大规模预训练模型。基于Transformer结构，在大约1.2万亿tokens上训练的70亿参数模型，支持中英双语，上下文窗口长度为4096。在标准的中文和英文权威benchmark（C-EVAL/MMLU）上均取得同尺寸最好的效果。
+Baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于Transformer结构，在大约1.2万亿tokens上训练的70亿参数模型，支持中英双语，上下文窗口长度为4096。在标准的中文和英文权威benchmark（C-EVAL/MMLU）上均取得同尺寸最好的效果。
 
 ## 数据
 
@@ -44,17 +44,17 @@ Baichuan-7B是由百川智能开发的一个开源的大规模预训练模型。
 ## 分词
 我们参考学术界方案使用SentencePiece中的byte pair encoding (BPE)作为分词算法，并且进行了以下的优化
 1. 目前大部分开源模型主要基于英文优化，因此对中文语料存在效率较低的问题。我们使用2000万条以中英为主的多语言语料训练分词模型，显著提升对于中文的压缩率
-2. 对于数学领域，我们参考了Llama和Galactica中的方案，对数字的每一位单独分开，避免出现数字不一致的问题，对于提升数学能力有重要帮助
+2. 对于数学领域，我们参考了LLaMA和Galactica中的方案，对数字的每一位单独分开，避免出现数字不一致的问题，对于提升数学能力有重要帮助
 3. 对于罕见字词（如特殊符号等），支持UTF-8-characters的byte编码，因此做到未知字词的全覆盖。 
-4. 我们分析了不同分词器对语料的压缩率，如下表，可见我们的分词器明显优于Llama, Falcon等开源模型，并且对比其他中文分词器在压缩率相当的情况下，训练和推理效率更高。
+4. 我们分析了不同分词器对语料的压缩率，如下表，可见我们的分词器明显优于LLaMA, Falcon等开源模型，并且对比其他中文分词器在压缩率相当的情况下，训练和推理效率更高。
 
-| Model         | BaiChuan-7B | Llama | Falcon | MPT-7B | ChatGLM | moss-moon-003 |
+| Model         | BaiChuan-7B | LLaMA | Falcon | MPT-7B | ChatGLM | moss-moon-003 |
 |---------------|-------------|-------|--------|--------|---------|---------------|
 | Compress Rate | 0.737       | 1.312 | 1.049  | 1.206  | 0.631   | 0.659         |
 | Vocab Size    | 64000       | 32000 | 65024  | 50254  | 130344  | 106029        |
 
 ## 模型结构
-整体模型基于标准的Transformer结构，我们采用了和Llama一样的模型设计
+整体模型基于标准的Transformer结构，我们采用了和LLaMA一样的模型设计
 * 位置编码：[rotary-embedding](https://arxiv.org/abs/2104.09864) 是现阶段被大多模型采用的位置编码方案，具有更好的外延效果。虽然训练过程中最大长度为4096，但是实际测试中模型可以很好的扩展到5000个tokens上，如下图：
    <p align="center">
     <br>
@@ -65,7 +65,7 @@ Baichuan-7B是由百川智能开发的一个开源的大规模预训练模型。
 * Layer-Normalization: 基于[RMSNorm](https://arxiv.org/abs/1910.07467) 的Pre-Normalization
 
 ## 训练稳定性和吞吐
-我们在原本的Llama框架上进行诸多修改以提升训练时的吞吐，具体包括：
+我们在原本的LLaMA框架上进行诸多修改以提升训练时的吞吐，具体包括：
 1. 算子优化技术：采用更高效算子，如Flash-attention，NVIDIA apex的RMSNorm等。 
 2. 算子切分技术：将部分计算算子进行切分，减小内存峰值。 
 3. 混合精度技术：降低在不损失模型精度的情况下加速计算过程。 
@@ -111,11 +111,11 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 | Claude-v1.3                 | 54.2    | 39.0      | 51.9 | 61.7            | 52.1       | 53.7   |
 | Claude-instant-v1.0         | 45.9    | 35.5      | 43.1 | 53.8            | 44.2       | 45.4   |
 | moss-moon-003-base (16b)    | 27.4    | 24.5      | 27.0 | 29.1            | 27.2       | 26.9   |
-| Ziya-Llama-13B-Pretrain     | 30.2    | 22.7      | 27.7 | 34.4            | 32.0       | 28.9   |
-| Llama-7b-hf                 | 27.1    | 25.9      | 27.1 | 26.8            | 27.9       | 26.3   |
+| Ziya-LLaMA-13B-Pretrain     | 30.2    | 22.7      | 27.7 | 34.4            | 32.0       | 28.9   |
+| LLaMA-7b-hf                 | 27.1    | 25.9      | 27.1 | 26.8            | 27.9       | 26.3   |
 | chatGLM-6b                  | 34.5    | 23.1      | 30.4 | 39.6            | 37.4       | 34.5   |
 | falcon-7b                   | 25.8    | 24.3      | 25.8 | 26.0            | 25.8       | 25.6   |
-| Open-Llama-V2-pretrain (7b) | 24.0    | 22.5      | 23.1 | 25.3            | 25.2       | 23.2   |
+| Open-LLaMA-V2-pretrain (7b) | 24.0    | 22.5      | 23.1 | 25.3            | 25.2       | 23.2   |
 | tigerbot-7b-base            | 25.7    | 27.0      | 27.3 | 24.7            | 23.4       | 26.1   |
 | Aquila-7b<sup>*</sup>       | 25.5    | 25.2      | 25.6 | 24.6            | 25.2       | 26.6   |
 | bloom-7b                    | 22.8    | 20.2      | 21.8 | 23.3            | 23.9       | 23.3   |
@@ -132,11 +132,11 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 | Model            | Average |
 |-------------------------|-----------------|
-| Open-Llama-V2-pretrain  | 21.41           |
+| Open-LLaMA-V2-pretrain  | 21.41           |
 | Ziya-LLaMA-13B-Pretrain | 23.17           |
 | falcon-7b               | 23.98           |
 | tigerbot-7b-base        | 25.94           |
-| LLAMA-7B                | 27.81           |
+| LLaMA-7B                | 27.81           |
 | chatGLM-6b              | 21.41           |
 | bloom-7b                | 26.96           |
 | bloomz-7b               | 28.72           |
@@ -152,11 +152,11 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 | Model            | Average |
 |-------------------------|-----------------|
-| Open-Llama-V2-pretrain  | 23.49           |
+| Open-LLaMA-V2-pretrain  | 23.49           |
 | Ziya-LLaMA-13B-Pretrain | 27.64           |
 | falcon-7b               | 27.18           |
 | tigerbot-7b-base        | 25.19           |
-| LLAMA-7B                | 28.17           |
+| LLaMA-7B                | 28.17           |
 | chatGLM-6b              | 23.49           |
 | bloom-7b                | 26.55           |
 | bloomz-7b               | 30.27           |
@@ -174,7 +174,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 | Model                                  | Humanities | Social Sciences | STEM | Other | Average |
 |----------------------------------------|-----------:|:---------------:|:----:|:-----:|:-------:|
-| Llama-7B<sup>2</sup>                   |       34.0 |      38.3       | 30.5 | 38.1  |  35.1   |
+| LLaMA-7B<sup>2</sup>                   |       34.0 |      38.3       | 30.5 | 38.1  |  35.1   |
 | falcon-7B<sup>1</sup>                  |          - |        -        |  -   |   -   |  35.0   |
 | mpt-7B<sup>1</sup>                     |          - |        -        |  -   |   -   |  35.6   |
 | chatGLM-6B<sup>0</sup>                 |       35.4 |      41.0       | 31.3 | 40.5  |  36.9   |
@@ -253,4 +253,4 @@ scripts/train.sh
 # 协议
 对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/baichuan-7B/blob/main/LICENSE)。
 
-对baichuan-7B模型权重的使用则需遵循[《Baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/Baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
+baichuan-7B支持商用。如果将baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：opensource@baichuan-inc.com， 具体许可协议可见[《Baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/Baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
