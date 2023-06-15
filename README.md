@@ -61,7 +61,7 @@ baichuan-7B是由百川智能开发的一个开源可商用的大规模预训练
     <img src="media/long-context-ppl.png" width="90%"/>
     <br>
      </p>
-* 激活层：SwiGLU,Feedforward变化为(8/3)倍的隐含层大小，即11008
+* 激活层：SwiGLU, Feedforward变化为(8/3)倍的隐含层大小，即11008
 * Layer-Normalization: 基于[RMSNorm](https://arxiv.org/abs/1910.07467) 的Pre-Normalization
 
 ## 训练稳定性和吞吐
