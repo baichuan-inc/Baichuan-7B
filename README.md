@@ -55,14 +55,14 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
 
 ## 模型结构
 整体模型基于标准的 Transformer 结构，我们采用了和 LLaMA 一样的模型设计
-* 位置编码：[rotary-embedding](https://arxiv.org/abs/2104.09864) 是现阶段被大多模型采用的位置编码方案，具有更好的外延效果。虽然训练过程中最大长度为4096，但是实际测试中模型可以很好的扩展到5000个tokens上，如下图：
+* 位置编码：[rotary-embedding](https://arxiv.org/abs/2104.09864) 是现阶段被大多模型采用的位置编码方案，具有更好的外延效果。虽然训练过程中最大长度为4096，但是实际测试中模型可以很好的扩展到 5000 tokens 上，如下图：
    <p align="center">
     <br>
     <img src="media/long-context-ppl.png" width="90%"/>
     <br>
      </p>
 * 激活层：SwiGLU, Feedforward 变化为(8/3)倍的隐含层大小，即11008
-* Layer-Normalization: 基于[RMSNorm](https://arxiv.org/abs/1910.07467) 的Pre-Normalization
+* Layer-Normalization: 基于 [RMSNorm](https://arxiv.org/abs/1910.07467) 的 Pre-Normalization
 
 ## 训练稳定性和吞吐
 我们在原本的LLaMA框架上进行诸多修改以提升训练时的吞吐，具体包括：
@@ -89,7 +89,7 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
 
 ## 中文评测
 ### C-Eval
-[CEval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为few-shot的来源，在test集上进行了 5-shot 测试。
+[CEval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为 few-shot 的来源，在 test 集上进行了 5-shot 测试。
 
 先修改 `evaluate_zh.py` 中的 OPENMODEL_PATH 和 CEVAL_DATA_PATH 两个值，分别是模型（文件夹）存放的路径和CEval数据集的路径。再执行下面的脚本。
 
