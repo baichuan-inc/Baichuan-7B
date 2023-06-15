@@ -28,7 +28,7 @@ baichuan-7B is an open-source, large-scale pre-training language model developed
 
 ## Data
 
-* The original corpora includes open-source Chinese and English data, self-crawled Chinese internet data, and some high-quality knowledge-intensive data, with a total volume exceeding 10T disk space.
+* The original corpora includes open-source Chinese and English data, self-crawled Chinese internet data, and some high-quality knowledge-intensive data.
 * Referring to related data work, frequency and quality are two dimensions that are considered important in the data processing stage. We apply heuristic rules and quality model scoring to filter the original dataset at both the paragraph and sentence levels. Employing the Locality-Sensitive Hashing (LSH) method on the full dataset, we perform de-duplication at both the paragraph and sentence levels.
 
 The whole data processing process is shown below:
