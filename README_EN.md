@@ -49,7 +49,7 @@ We use the byte pair encoding (BPE) from SentencePiece as the tokenization algor
 3. For rare words (such as emoji and special symbols), we fallback unknown characters to byte encoding of UTF-8, thus achieving full coverage of unknown words.
 4. We analyzed the compression rate of different tokenizers on the corpus. As shown in the following table, our tokenizer significantly outperforms open-source models like Llama, Falcon, and others. Compared to other Chinese tokenizers with similar compression rates, it offers higher training and inference efficiency. 
 
-| Model         | baichuan-7B | Llama | Falcon | MPT-7B | ChatGLM | moss-moon-003 |
+| Model         | baichuan-7B | LLaMA | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
 |---------------|-------------|-------|--------|--------|---------|---------------|
 | Compress Rate | 0.737       | 1.312 | 1.049  | 1.206  | 0.631   | 0.659         |
 | Vocab Size    | 64000       | 32000 | 65024  | 50254  | 130344  | 106029        |
