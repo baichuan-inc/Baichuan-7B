@@ -138,7 +138,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 | Ziya-LLaMA-13B-pretrain | 23.17           |
 | Falcon-7B               | 23.98           |
 | TigerBot-7B-base        | 25.94           |
-| LLAMA-7B                | 27.81           |
+| LLaMA-7B                | 27.81           |
 | ChatGLM-6B              | 21.41           |
 | BLOOM-7B                | 26.96           |
 | BLOOMZ-7B               | 28.72           |
@@ -157,8 +157,8 @@ we conducted a 5-shot test on all models.
 | Open-LLaMA-v2-pretrain  | 23.49           |
 | Ziya-LLaMA-13B-pretrain | 27.64           |
 | Falcon-7B               | 27.18           |
-| Tigerbot-7B-base        | 25.19           |
-| LLAMA-7B                | 28.17           |
+| TigerBot-7B-base        | 25.19           |
+| LLaMA-7B                | 28.17           |
 | ChatGLM-6B              | 23.49           |
 | BLOOM-7B                | 26.55           |
 | BLOOMZ-7B               | 30.27           |
