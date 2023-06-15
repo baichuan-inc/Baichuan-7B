@@ -112,15 +112,15 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 | Claude-instant-v1.0         | 45.9    | 35.5      | 43.1 | 53.8            | 44.2       | 45.4   |
 | moss-moon-003-base (16b)    | 27.4    | 24.5      | 27.0 | 29.1            | 27.2       | 26.9   |
 | Ziya-LLaMA-13B-Pretrain     | 30.2    | 22.7      | 27.7 | 34.4            | 32.0       | 28.9   |
-| LLaMA-7b-hf                 | 27.1    | 25.9      | 27.1 | 26.8            | 27.9       | 26.3   |
-| chatGLM-6b                  | 34.5    | 23.1      | 30.4 | 39.6            | 37.4       | 34.5   |
-| falcon-7b                   | 25.8    | 24.3      | 25.8 | 26.0            | 25.8       | 25.6   |
-| Open-LLaMA-V2-pretrain (7b) | 24.0    | 22.5      | 23.1 | 25.3            | 25.2       | 23.2   |
-| tigerbot-7b-base            | 25.7    | 27.0      | 27.3 | 24.7            | 23.4       | 26.1   |
-| Aquila-7b<sup>*</sup>       | 25.5    | 25.2      | 25.6 | 24.6            | 25.2       | 26.6   |
-| bloom-7b                    | 22.8    | 20.2      | 21.8 | 23.3            | 23.9       | 23.3   |
-| bloomz-7b                   | 35.7    | 25.8      | 31.3 | 43.5            | 36.6       | 35.6   |
-| **baichuan-7b**             | 42.8    | 31.5      | 38.2 | 52.0            | 46.2       | 39.3   |
+| LLaMA-7B-hf                 | 27.1    | 25.9      | 27.1 | 26.8            | 27.9       | 26.3   |
+| chatGLM-6B                  | 34.5    | 23.1      | 30.4 | 39.6            | 37.4       | 34.5   |
+| falcon-7B                   | 25.8    | 24.3      | 25.8 | 26.0            | 25.8       | 25.6   |
+| Open-LLaMA-V2-pretrain (7B) | 24.0    | 22.5      | 23.1 | 25.3            | 25.2       | 23.2   |
+| tigerbot-7B-base            | 25.7    | 27.0      | 27.3 | 24.7            | 23.4       | 26.1   |
+| Aquila-7B<sup>*</sup>       | 25.5    | 25.2      | 25.6 | 24.6            | 25.2       | 26.6   |
+| bloom-7B                    | 22.8    | 20.2      | 21.8 | 23.3            | 23.9       | 23.3   |
+| bloomz-7B                   | 35.7    | 25.8      | 31.3 | 43.5            | 36.6       | 35.6   |
+| **baichuan-7B**             | 42.8    | 31.5      | 38.2 | 52.0            | 46.2       | 39.3   |
 
 
 ### Gaokao
@@ -134,14 +134,14 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 |-------------------------|-----------------|
 | Open-LLaMA-V2-pretrain  | 21.41           |
 | Ziya-LLaMA-13B-Pretrain | 23.17           |
-| falcon-7b               | 23.98           |
-| tigerbot-7b-base        | 25.94           |
+| falcon-7B               | 23.98           |
+| tigerbot-7B-base        | 25.94           |
 | LLaMA-7B                | 27.81           |
-| chatGLM-6b              | 21.41           |
-| bloom-7b                | 26.96           |
-| bloomz-7b               | 28.72           |
-| Aquila-7b<sup>*</sup>               | 24.39           |
-| **baichuan-7b**        | **36.24**           |
+| chatGLM-6B              | 21.41           |
+| bloom-7B                | 26.96           |
+| bloomz-7B               | 28.72           |
+| Aquila-7B<sup>*</sup>               | 24.39           |
+| **baichuan-7B**        | **36.24**           |
 
 
 ### AGIEval
@@ -154,14 +154,14 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 |-------------------------|-----------------|
 | Open-LLaMA-V2-pretrain  | 23.49           |
 | Ziya-LLaMA-13B-Pretrain | 27.64           |
-| falcon-7b               | 27.18           |
-| tigerbot-7b-base        | 25.19           |
+| falcon-7B               | 27.18           |
+| tigerbot-7B-base        | 25.19           |
 | LLaMA-7B                | 28.17           |
-| chatGLM-6b              | 23.49           |
-| bloom-7b                | 26.55           |
-| bloomz-7b               | 30.27           |
-| Aquila-7b<sup>*</sup>               | 25.58           |
-| **baichuan-7b**        | **34.44**           |
+| chatGLM-6B              | 23.49           |
+| bloom-7B                | 26.55           |
+| bloomz-7B               | 30.27           |
+| Aquila-7B<sup>*</sup>               | 25.58           |
+| **baichuan-7B**        | **34.44**           |
 
 <sup>*</sup>其中Aquila模型来源于智源官方网站(https://model.baai.ac.cn/model-detail/100098) 仅做参考
 
