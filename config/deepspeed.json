@@ -1,0 +1,37 @@
+{
+  "gradient_accumulation_steps": 1,
+  "train_micro_batch_size_per_gpu": 1,
+  "prescale_gradients": false,
+  "zero_allow_untested_optimizer": true,
+  "optimizer": {
+    "type": "AdamW",
+    "params": {
+      "lr": 1e-8,
+      "eps": 1.0e-8,
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "weight_decay": 0.1
+    }
+  },
+  "tensorboard": {
+    "enabled": true,
+    "output_path": "logs/",
+    "job_name": "baichuan-7b-pt"
+  },
+  "zero_optimization": {
+    "stage": 3,
+    "contiguous_gradients": false,
+    "allgather_bucket_size": 3e8,
+    "reduce_bucket_size": 3e8,
+    "overlap_comm": true,
+    "reduce_scatter": true
+  },
+  "steps_per_print": 16,
+  "gradient_clipping": 1.0,
+  "wall_clock_breakdown": true,
+  "bf16": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,3 @@
+[master address] slots=8
+[worker address] slots=8
+...
