@@ -56,7 +56,7 @@ We use the byte pair encoding (BPE) from SentencePiece as the tokenization algor
 
 ## Model Architecture
 The overall model is based on the standard Transformer structure, and we have adopted a model design similar to that of LLaMA.
-* Positional Embeddings:[rotary-embedding](https://arxiv.org/abs/2104.09864) is the widely used positional encoding method, with better extrapolation effects. Although the maximum length during training is 4096, the model can be well extrapolated to 5000 tokens in inference time, as shown in the following diagram:
+* Positional Embeddings: [rotary-embedding](https://arxiv.org/abs/2104.09864) is the widely used positional encoding method, with better extrapolation effects. Although the maximum length during training is 4096, the model can be well extrapolated to 5000 tokens in inference time, as shown in the following diagram:
    <p align="center">
     <br>
     <img src="media/long-context-ppl.png" width="90%"/>
