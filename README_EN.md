@@ -255,4 +255,4 @@ scripts/train.sh
 # Licences
 The use of the source code in this repository is governed by the open source license [Apache 2.0](https://github.com/baichuan-inc/baichuan-7B/blob/main/LICENSE) .
 
-The use of the baichuan-7B model weights, however, must follow the [《baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/Baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) .
+The use of the baichuan-7B model weights, however, must follow the [《baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) .
