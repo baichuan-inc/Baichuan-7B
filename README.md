@@ -69,10 +69,10 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
 1. 算子优化技术：采用更高效算子，如 Flash-attention，NVIDIA apex 的 RMSNorm 等。 
 2. 算子切分技术：将部分计算算子进行切分，减小内存峰值。 
 3. 混合精度技术：降低在不损失模型精度的情况下加速计算过程。 
-4. 训练容灾技术：训练平台和训练框架联合优化，IaaS+PaaS实现分钟级的故障定位和任务恢复。 
+4. 训练容灾技术：训练平台和训练框架联合优化，IaaS + PaaS 实现分钟级的故障定位和任务恢复。 
 5. 通信优化技术，具体包括： 
    1. 采用拓扑感知的集合通信算法，避免网络拥塞问题，提高通信效率。 
-   2. 根据卡数自适应设置bucket size，提高带宽利用率。 
+   2. 根据卡数自适应设置 bucket size，提高带宽利用率。 
    3. 根据模型和集群环境，调优通信原语的触发时机，从而将计算和通信重叠。
 
 基于上述的几个优化技术，我们在千卡A800机器上达到了7B模型182Tflops的吞吐，GPU峰值算力利用率高达58.3% 。
@@ -89,9 +89,9 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
 
 ## 中文评测
 ### C-Eval
-[CEval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为 few-shot 的来源，在 test 集上进行了 5-shot 测试。
+[C-Eval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为 few-shot 的来源，在 test 集上进行了 5-shot 测试。
 
-先修改 `evaluate_zh.py` 中的 OPENMODEL_PATH 和 CEVAL_DATA_PATH 两个值，分别是模型（文件夹）存放的路径和CEval数据集的路径。再执行下面的脚本。
+先修改 `evaluate_zh.py` 中的 OPENMODEL_PATH 和 CEVAL_DATA_PATH 两个值，分别是模型（文件夹）存放的路径和 C-Eval 数据集的路径。再执行下面的脚本。
 
 ```shell
 shot=5  # few-shot
@@ -126,7 +126,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 ### Gaokao
 [Gaokao](https://github.com/ExpressAI/AI-Gaokao) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。
-我们只保留了其中的单项选择题，随机划分后对所有模型进行统一5-shot测试。
+我们只保留了其中的单项选择题，随机划分后对所有模型进行统一 5-shot 测试。
 
 ### 结果
 以下是测试的结果。
