@@ -45,9 +45,9 @@ The whole data processing process is shown below:
 We use the byte pair encoding (BPE) from SentencePiece as the tokenization algorithm, along with the following optimizations:
 
 1. Most open-source models are primarily optimized for English, resulting in low efficiency for Chinese corpus. So we trained the tokenizer using 20 million multilingual corpora mainly composed of Chinese and English, significantly improving the compression rate for Chinese.
-2. To improve the ability for mathmatics, we split all numbers into individual digits that is also adopted in Llama and Galactica, separately tokenizing each digit to avoid inconsistencies in numbers.
+2. To improve the ability for mathmatics, we split all numbers into individual digits that is also adopted in LLaMA and Galactica, separately tokenizing each digit to avoid inconsistencies in numbers.
 3. For rare words (such as emoji and special symbols), we fallback unknown characters to byte encoding of UTF-8, thus achieving full coverage of unknown words.
-4. We analyzed the compression rate of different tokenizers on the corpus. As shown in the following table, our tokenizer significantly outperforms open-source models like Llama, Falcon, and others. Compared to other Chinese tokenizers with similar compression rates, it offers higher training and inference efficiency. 
+4. We analyzed the compression rate of different tokenizers on the corpus. As shown in the following table, our tokenizer significantly outperforms open-source models like LLaMA, Falcon, and others. Compared to other Chinese tokenizers with similar compression rates, it offers higher training and inference efficiency. 
 
 | Model         | baichuan-7B | LLaMA | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
 |---------------|-------------|-------|--------|--------|---------|---------------|
@@ -55,18 +55,18 @@ We use the byte pair encoding (BPE) from SentencePiece as the tokenization algor
 | Vocab Size    | 64000       | 32000 | 65024  | 50254  | 130344  | 106029        |
 
 ## Model Architecture
-The overall model is based on the standard Transformer structure, and we have adopted a model design similar to that of Llama.
+The overall model is based on the standard Transformer structure, and we have adopted a model design similar to that of LLaMA.
 * Positional Embeddings:[rotary-embedding](https://arxiv.org/abs/2104.09864) is the widely used positional encoding method, with better extrapolation effects. Although the maximum length during training is 4096, the model can be well extrapolated to 5000 tokens in inference time, as shown in the following diagram:
    <p align="center">
     <br>
     <img src="media/long-context-ppl.png" width="90%"/>
     <br>
      </p>
-* Activation：SwiGLU, and the dimension of the feedforward-layer are set to 11008
+* Activation：SwiGLU, and the dimension of the feedforward-layer is set to 11008
 * Layer-Normalization: We use the Pre-Normalization method based on [RMSNorm](https://arxiv.org/abs/1910.07467)
 
 ## Training stability and Throughput
-We made numerous modifications to the original Llama framework to improve throughput during training, including:
+We made numerous modifications to the original LLaMA framework to improve throughput during training, including:
 
 1. Operator optimization technology: We adopted more efficient operators, such as Flash-attention, NVIDIA apex's RMSNorm, etc.
 2. Tensor partitioning technology: We partitioned some computational operators to reduce peak memory usage.
