@@ -33,7 +33,7 @@ def load_model(model_id):
         tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
         model = AutoModel.from_pretrained(model_id, trust_remote_code=True, device_map='auto', torch_dtype=torch.float16)
     elif 'bloomz' in model_id:
-        from transformers import BloomForCausalLM
+        from transformers import AutoTokenizer, BloomForCausalLM
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         model = BloomForCausalLM.from_pretrained(model_id, device_map='auto', torch_dtype=torch.float16)
     elif 'tigerbot' in model_id:
