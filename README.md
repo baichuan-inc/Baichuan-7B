@@ -219,7 +219,7 @@ python evaluation/evaluate_mmlu.py -m /path/to/baichuan-7b
 
 # 推理方法
 
-推理代码已经在[官方 Huggingface 库](https://huggingface.co/baichuan-inc/baichuan-7B) 
+推理代码已经在[官方 Hugging Face 库](https://huggingface.co/baichuan-inc/baichuan-7B) 
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
