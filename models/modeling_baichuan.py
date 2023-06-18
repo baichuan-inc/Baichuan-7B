@@ -200,11 +200,7 @@ class Attention(nn.Module):
             value_states = proj[2].view(bsz, q_len, self.num_heads, self.head_dim)
 
             kv_seq_len = key_states.shape[-2]
-            if self.cos is None or (not self.training):
-                cos, sin = self.rotary_emb(value_states, seq_len=kv_seq_len)
-                self.cos, self.sin = cos, sin
-            else:
-                cos, sin = self.cos, self.sin
+            cos, sin = self.rotary_emb(value_states, seq_len=kv_seq_len)
             query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin, position_ids)
 
             query_states = query_states.transpose(1, 2)
@@ -251,7 +247,7 @@ class Attention(nn.Module):
                 attn_weights = torch.max(attn_weights, torch.tensor(torch.finfo(attn_weights.dtype).min))
 
             # upcast attention to fp32
-            attn_weights = nn.functional.softmax(attn_weights, dim=-1)
+            attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)
             attn_output = torch.matmul(attn_weights, value_states)
 
             if attn_output.size() != (bsz, self.num_heads, q_len, self.head_dim):
