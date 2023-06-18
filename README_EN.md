@@ -24,7 +24,7 @@
 
 # Introduction
 
-baichuan-7B is an open-source, large-scale pre-training language model developed by Baichuan Intelligent Technology. baichuan-7B is based on Transformer architecture, which contains 7 billion parameter and trained on approximately 1.2 trillion tokens. It supports both Chinese and English languages with a context window length of 4096. It has achieved the best performance among models of the same size on standard Chinese and English authoritative benchmarks (C-EVAL, MMLU, etc).
+baichuan-7B is an open-source, large-scale pre-trained language model developed by Baichuan Intelligent Technology. baichuan-7B is based on Transformer architecture, which contains 7 billion parameters and trained on approximately 1.2 trillion tokens. It supports both Chinese and English languages with a context window length of 4096. It has achieved the best performance among models of the same size on standard Chinese and English authoritative benchmarks (C-EVAL, MMLU, etc).
 
 ## Data
 
@@ -52,7 +52,7 @@ We use the byte pair encoding (BPE) from SentencePiece as the tokenization algor
 | Model         | baichuan-7B | LLaMA | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
 |---------------|-------------|-------|--------|--------|---------|---------------|
 | Compress Rate | 0.737       | 1.312 | 1.049  | 1.206  | 0.631   | 0.659         |
-| Vocab Size    | 64000       | 32000 | 65024  | 50254  | 130344  | 106029        |
+| Vocab Size    | 64,000      | 32,000 | 65,024 | 50,254  | 130,344 | 106,029     |
 
 ## Model Architecture
 The overall model is based on the standard Transformer structure, and we have adopted a model design similar to that of LLaMA.
@@ -62,7 +62,7 @@ The overall model is based on the standard Transformer structure, and we have ad
     <img src="media/long-context-ppl.png" width="90%"/>
     <br>
      </p>
-* Activation：SwiGLU, and the dimension of the feedforward-layer is set to 11008
+* Activation：SwiGLU, and the dimension of the feedforward-layer is set to 11,008
 * Layer-Normalization: We use the Pre-Normalization method based on [RMSNorm](https://arxiv.org/abs/1910.07467)
 
 ## Training stability and Throughput
@@ -77,7 +77,7 @@ We made numerous modifications to the original LLaMA framework to improve throug
    2. Adaptive setting of bucket size based on the number of cards to improve bandwidth utilization.
    3. Tuning the trigger timing of communication primitives based on the model and the cluster environment, thereby overlapping computation and communication.
    
-By using these optimization techniques, we achieved a throughput of 182 Tflops for the 7B model on thousand A800 GPUs, with a peak GPU computing power utilization rate of up to 58.3%.
+By using these optimization techniques, we achieved a throughput of 182 TFLOPS for the 7B model on thousand A800 GPUs, with a peak GPU computing power utilization rate of up to 58.3%.
 
 The final loss of the model is shown below：
 <p align="center">
@@ -93,7 +93,7 @@ The final loss of the model is shown below：
 [C-Eval](https://cevalbenchmark.com/index.html) is a comprehensive Chinese language models evaluation dataset, covering 52 subjects and four levels of difficulty. We used the dev set from this dataset as the source for few-shot learning and conducted a 5-shot test on the test set.
 
 
-Change OPENMODEL_PATH and CEVAL_DATA_PATH in evaluate_zh.py, corresponding to model directory and C-Eval dataset, and runing:
+Change OPENMODEL_PATH and CEVAL_DATA_PATH in evaluate_zh.py, corresponding to model and C-Eval dataset's directory, then run:
 ```shell
 shot=5  # few-shot
 gpu=0  # GPUid
@@ -128,7 +128,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 
 ### Gaokao
-[Gaokao](https://github.com/ExpressAI/AI-Gaokao) is an evaluation dataset used in  Chinese college entrance examination questions to evaluate the capabilities of large language models, assessing the model's language ability and logical reasoning skills. We processed the dataset to only containing the single-answer multiple choice questions, we conducted a 5-shot test on all models.
+[Gaokao](https://github.com/ExpressAI/AI-Gaokao) is an evaluation dataset used in Chinese College Entrance Examination to evaluate the capabilities of large language models, assessing models' language ability and logical reasoning skills. We processed the dataset to only containing single-answer multiple choice questions, we conducted a 5-shot test on all models.
 
 ### Results
 
@@ -147,7 +147,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 
 ### AGIEval
-[AGIEval](https://github.com/microsoft/AGIEval) is a dataset aimed at evaluating the model's general abilities in cognitive and problem-solving tasks.
+[AGIEval](https://github.com/microsoft/AGIEval) is a dataset aimed at evaluating models' general abilities in cognitive and problem-solving tasks.
 we conducted a 5-shot test on all models.
 
 ### Result
@@ -168,7 +168,7 @@ we conducted a 5-shot test on all models.
 <sup>*</sup>The Aquila-7b are not implemented on Huggingface yet so we derived the model from (https://model.baai.ac.cn/model-detail/100098), which may have not identical to their official result.
 
 ## English Benchmarks
-In addition to Chinese, we also tested the performance of the model in English. [MMLU](https://arxiv.org/abs/2009.03300) is an English evaluation dataset that includes 57 multiple-choice tasks, covering elementary mathematics, American history, computer science, law, etc. The difficulty spans from high school level to expert level, making it a mainstream evaluation dataset for Large Language Models (LLMs).
+In addition to Chinese, we also tested the performance of models in English. [MMLU](https://arxiv.org/abs/2009.03300) is an English evaluation dataset that includes 57 multiple-choice tasks, covering elementary mathematics, American history, computer science, law, etc. The difficulty spans from high school level to expert level, making it a mainstream evaluation dataset for Large Language Models (LLMs).
 
 We adopt the public implementation of (https://github.com/hendrycks/test) and the final result is shwon below：
 
@@ -184,13 +184,12 @@ We adopt the public implementation of (https://github.com/hendrycks/test) and th
 | BLOOMZ 7B<sup>0</sup>                  |       31.3 |      42.1       | 34.4 | 39.0  |  36.1   |
 | moss-moon-003-base (16B)<sup>0</sup>   |       24.2 |      22.8       | 22.4 | 24.4  |  23.6   |
 | moss-moon-003-sft (16B)<sup>0</sup>    |       30.5 |      33.8       | 29.3 | 34.4  |  31.9   |
-| **baichuan-7B<sup>0</sup>**            |       **38.4** |  **48.9**     | **35.6** | **48.1**  |  **42.3**   |
+| **baichuan-7B<sup>0</sup>**            |   **38.4** |    **48.9**     | **35.6** | **48.1** |  **42.3** |
 
 ### Notes：
-
-    0:Our implementation
-    1:https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
-    2:https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu
+    0: Our implementation
+    1: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
+    2: https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu
 
 ### How to implement by yourself
 ```shell
