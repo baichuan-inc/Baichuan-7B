@@ -24,7 +24,7 @@
 
 # 介绍
 
-baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约1.2万亿 tokens 上训练的70亿参数模型，支持中英双语，上下文窗口长度为4096。在标准的中文和英文权威 benchmark（C-EVAL/MMLU）上均取得同尺寸最好的效果。
+baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约 1.2 万亿 tokens 上训练的 70 亿参数模型，支持中英双语，上下文窗口长度为 4096。在标准的中文和英文权威 benchmark（C-EVAL/MMLU）上均取得同尺寸最好的效果。
 
 ## 数据
 
@@ -42,31 +42,31 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
 * 我们使用了一个基于自动学习的数据权重策略，对不同类别的数据进行配比。
 
 ## 分词
-我们参考学术界方案使用 SentencePiece 中的 byte pair encoding (BPE)作为分词算法，并且进行了以下的优化：
-1. 目前大部分开源模型主要基于英文优化，因此对中文语料存在效率较低的问题。我们使用2000万条以中英为主的多语言语料训练分词模型，显著提升对于中文的压缩率。
+我们参考学术界方案使用 SentencePiece 中的 Byte-Pair Encoding (BPE) 作为分词算法，并且进行了以下的优化：
+1. 目前大部分开源模型主要基于英文优化，因此对中文语料存在效率较低的问题。我们使用 2000 万条以中英为主的多语言语料训练分词模型，显著提升对于中文的压缩率。
 2. 对于数学领域，我们参考了 LLaMA 和 Galactica 中的方案，对数字的每一位单独分开，避免出现数字不一致的问题，对于提升数学能力有重要帮助。
-3. 对于罕见字词（如特殊符号等），支持 UTF-8-characters 的 byte 编码，因此做到未知字词的全覆盖。 
+3. 对于罕见字词（如特殊符号等），支持 UTF-8 characters 的 byte 编码，因此做到未知字词的全覆盖。 
 4. 我们分析了不同分词器对语料的压缩率，如下表，可见我们的分词器明显优于 LLaMA, Falcon 等开源模型，并且对比其他中文分词器在压缩率相当的情况下，训练和推理效率更高。
 
 | Model         | baichuan-7B | LLaMA | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
 |---------------|-------------|-------|--------|--------|---------|---------------|
 | Compress Rate | 0.737       | 1.312 | 1.049  | 1.206  | 0.631   | 0.659         |
-| Vocab Size    | 64000       | 32000 | 65024  | 50254  | 130344  | 106029        |
+| Vocab Size    | 64,000       | 32,000 | 65,024  | 50,254  | 130,344  | 106,029        |
 
 ## 模型结构
 整体模型基于标准的 Transformer 结构，我们采用了和 LLaMA 一样的模型设计
-* 位置编码：[rotary-embedding](https://arxiv.org/abs/2104.09864) 是现阶段被大多模型采用的位置编码方案，具有更好的外延效果。虽然训练过程中最大长度为4096，但是实际测试中模型可以很好的扩展到 5000 tokens 上，如下图：
+* 位置编码：[rotary-embedding](https://arxiv.org/abs/2104.09864) 是现阶段被大多模型采用的位置编码方案，具有更好的外延效果。虽然训练过程中最大长度为4096，但是实际测试中模型可以很好的扩展到 5000 tokens 以上，如下图：
    <p align="center">
     <br>
     <img src="media/long-context-ppl.png" width="90%"/>
     <br>
      </p>
-* 激活层：SwiGLU, Feedforward 变化为(8/3)倍的隐含层大小，即11008
+* 激活层：SwiGLU, Feedforward 变化为 8/3 倍的隐含层大小，即 11,008
 * Layer-Normalization: 基于 [RMSNorm](https://arxiv.org/abs/1910.07467) 的 Pre-Normalization
 
 ## 训练稳定性和吞吐
-我们在原本的LLaMA框架上进行诸多修改以提升训练时的吞吐，具体包括：
-1. 算子优化技术：采用更高效算子，如 Flash-attention，NVIDIA apex 的 RMSNorm 等。 
+我们在原本的 LLaMA 框架上进行诸多修改以提升训练时的吞吐，具体包括：
+1. 算子优化技术：采用更高效算子，如 Flash-Attention，NVIDIA apex 的 RMSNorm 等。 
 2. 算子切分技术：将部分计算算子进行切分，减小内存峰值。 
 3. 混合精度技术：降低在不损失模型精度的情况下加速计算过程。 
 4. 训练容灾技术：训练平台和训练框架联合优化，IaaS + PaaS 实现分钟级的故障定位和任务恢复。 
@@ -75,7 +75,7 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
    2. 根据卡数自适应设置 bucket size，提高带宽利用率。 
    3. 根据模型和集群环境，调优通信原语的触发时机，从而将计算和通信重叠。
 
-基于上述的几个优化技术，我们在千卡A800机器上达到了7B模型182Tflops的吞吐，GPU峰值算力利用率高达58.3% 。
+基于上述的几个优化技术，我们在千卡 A800 显卡上达到了 7B 模型 182 TFLOPS 的吞吐，GPU 峰值算力利用率高达 58.3%。
    
 
 最终的loss如下图：
@@ -89,9 +89,9 @@ baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训�
 
 ## 中文评测
 ### C-Eval
-[C-Eval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了52个学科和四个难度的级别。我们使用该数据集的dev集作为 few-shot 的来源，在 test 集上进行了 5-shot 测试。
+[C-Eval 数据集](https://cevalbenchmark.com/index.html)是一个全面的中文基础模型评测数据集，涵盖了 52 个学科和四个难度的级别。我们使用该数据集的 dev 集作为 few-shot 的来源，在 test 集上进行了 5-shot 测试。
 
-先修改 `evaluate_zh.py` 中的 OPENMODEL_PATH 和 CEVAL_DATA_PATH 两个值，分别是模型（文件夹）存放的路径和 C-Eval 数据集的路径。再执行下面的脚本。
+先修改 `evaluate_zh.py` 中的 OPENMODEL_PATH 和 CEVAL_DATA_PATH 两个值，分别是模型存放的路径和 C-Eval 数据集的路径，再执行下面的脚本：
 
 ```shell
 shot=5  # few-shot
@@ -147,7 +147,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 ### AGIEval
 [AGIEval](https://github.com/microsoft/AGIEval) 旨在评估模型的认知和解决问题相关的任务中的一般能力。
-我们只保留了其中的四选一单项选择题，随机划分后对所有模型进行了统一5-shot测试。
+我们只保留了其中的四选一单项选择题，随机划分后对所有模型进行了统一 5-shot 测试。
 
 ### 结果
 
@@ -167,7 +167,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 <sup>*</sup>其中 Aquila 模型来源于智源官方网站(https://model.baai.ac.cn/model-detail/100098) 仅做参考
 
 ## 英文榜单
-除了中文之外，我们也测试了模型在英文上的效果，[MMLU](https://arxiv.org/abs/2009.03300) 是包含57个多选任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。
+除了中文之外，我们也测试了模型在英文上的效果，[MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个多选任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。
 
 我们采用了[开源](https://github.com/hendrycks/test) 的评测方案，最终 5-shot 结果如下所示：
 
@@ -186,10 +186,9 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 | **baichuan-7B<sup>0</sup>**            |       **38.4** |  **48.9**     | **35.6** | **48.1**  |  **42.3**   |
 
 ### 上标说明：
-
-    0:重新复现
-    1:https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
-    2:https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu
+    0: 重新复现
+    1: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
+    2: https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu
 
 ### 复现方法
 ```shell
@@ -254,4 +253,4 @@ scripts/train.sh
 # 协议
 对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/baichuan-7B/blob/main/LICENSE)。
 
-baichuan-7B支持商用。如果将baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：opensource@baichuan-inc.com， 具体许可协议可见[《baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
+baichuan-7B 支持商用。如果将 baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：opensource@baichuan-inc.com， 具体许可协议可见[《baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
