@@ -93,7 +93,7 @@ The final loss of the model is shown below：
 [C-Eval](https://cevalbenchmark.com/index.html) is a comprehensive Chinese language models evaluation dataset, covering 52 subjects and four levels of difficulty. We used the dev set from this dataset as the source for few-shot learning and conducted a 5-shot test on the test set.
 
 
-Change OPENMODEL_PATH and CEVAL_DATA_PATH in evaluate_zh.py, corresponding to model and C-Eval dataset's directory, then run:
+Change OPENMODEL_PATH and CEVAL_DATA_PATH in evaluate_zh.py, corresponding to model's and C-Eval dataset's directories, then run:
 ```shell
 shot=5  # few-shot
 gpu=0  # GPUid
@@ -128,7 +128,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 
 ### Gaokao
-[Gaokao](https://github.com/ExpressAI/AI-Gaokao) is an evaluation dataset used in Chinese College Entrance Examination to evaluate the capabilities of large language models, assessing models' language ability and logical reasoning skills. We processed the dataset to only containing single-answer multiple choice questions, we conducted a 5-shot test on all models.
+[Gaokao](https://github.com/ExpressAI/AI-Gaokao) is an evaluation dataset curated from questions used in Chinese College Entrance Examination, to evaluate the capabilities of large language models, assessing models' language ability and logical reasoning skills. We processed the dataset to only containing single-answer multiple choice questions, we conducted a 5-shot test on all models.
 
 ### Results
 
