@@ -243,7 +243,7 @@ pip install -r requirements.txt
 下载 tokenizer 模型文件 [tokenizer.model](https://huggingface.co/baichuan-inc/baichuan-7B/blob/main/tokenizer.model) ，放置在项目目录下。
    
 ## 配置 DeepSpeed
-本示范代码采用 DeepSpeed 框架进行训练。用户需根据集群情况，修改 `config/hostfile` ，如果是多机多卡，需要修改 ssh 中各个节点的 IP 配置。具体可以参见DeepSpeed[官方说明](https://www.deepspeed.ai/) 。
+本示范代码采用 DeepSpeed 框架进行训练。用户需根据集群情况，修改 `config/hostfile` ，如果是多机多卡，需要修改 ssh 中各个节点的 IP 配置。具体可以参见 DeepSpeed [官方说明](https://www.deepspeed.ai/) 。
 
 ## 执行训练
 ```python
