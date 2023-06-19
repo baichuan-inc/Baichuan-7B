@@ -157,6 +157,22 @@ python evaluation/evaluate_mmlu.py -m /path/to/baichuan-7b
     <br>
 </p>
 
+# 推理方法
+
+推理代码已经在[官方 Huggingface 库](https://huggingface.co/baichuan-inc/baichuan-7B) 
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/baichuan-7B", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/baichuan-7B", device_map="auto", trust_remote_code=True)
+inputs = tokenizer('登鹳雀楼->王之涣\n夜雨寄北->', return_tensors='pt')
+inputs = inputs.to('cuda:0')
+pred = model.generate(**inputs, max_new_tokens=64,repetition_penalty=1.1)
+print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
+
+```
+
 # 数据
 
 * 原始数据包括开源的中英文数据和自行抓取的中文互联网数据，以及部分高质量知识性数据。
@@ -216,21 +232,7 @@ python evaluation/evaluate_mmlu.py -m /path/to/baichuan-7b
     <br>
 </p>
 
-# 推理方法
 
-推理代码已经在[官方 Huggingface 库](https://huggingface.co/baichuan-inc/baichuan-7B) 
-
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/baichuan-7B", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/baichuan-7B", device_map="auto", trust_remote_code=True)
-inputs = tokenizer('登鹳雀楼->王之涣\n夜雨寄北->', return_tensors='pt')
-inputs = inputs.to('cuda:0')
-pred = model.generate(**inputs, max_new_tokens=64,repetition_penalty=1.1)
-print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
-
-```
 # 训练方法
 ## 安装依赖
 ```shell
