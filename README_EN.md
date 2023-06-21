@@ -256,5 +256,14 @@ The use of the source code in this repository is governed by the open source lic
 
 The use of the baichuan-7B model weights, however, must follow the [《baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf) .
 
+# Third-Party Resources
+
+1. [LLaMA Efficient Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) supports baichuan-7B to use Qlora for finetuning, supports RLHF, and supports WebDemo. For models that have gone through sft, see [hiyouga/baichuan-7b-sft](https://huggingface.co/hiyouga/baichuan-7b-sft).
+2. [fireballoon/baichuan-vicuna-chinese-7b](https://huggingface.co/fireballoon/baichuan-vicuna-chinese-7b) uses ShareGPT, ShareGPT-ZH, COT & COT-ZH, Leetcode, dummy, and other Chinese and English data for finetuning. For training code, refer to FastChat.
+3. [fireballoon/baichuan-vicuna-7b](https://huggingface.co/fireballoon/baichuan-vicuna-7b) uses ShareGPT, COT, and Leetcode, among other data, for mixed finetuning. For training code, refer to FastChat.
+4. [Efficient-Tuning-LLMs](https://github.com/jianzhnie/Efficient-Tuning-LLMs) supports baichuan-7B to use Qlora for finetuning and 4bit inference.
+5. [fastllm](https://github.com/ztxz16/fastllm) is a large model library implemented purely in C++, with no third-party dependencies, and supports baichuan-7B to run on mobile devices.
+6. [TheBloke/baichuan-7B-GPTQ](https://huggingface.co/TheBloke/baichuan-7B-GPTQ) is for the 4bit quantization of baichuan-7B's GPTQ.
+
 # Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=baichuan-inc/baichuan-7B&type=Date)](https://star-history.com/#baichuan-inc/baichuan-7B&Date)
