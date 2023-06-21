@@ -81,10 +81,11 @@ class DataEngine():
                     if len(cc) < self.MIN_TEXT_LEN:
                         cc = []
                     data.extend(cc)
-                    if len(data) >= self.micro_batch_size * (self.max_length + 1):
+                    while len(data) >= self.micro_batch_size * (self.max_length + 1):
                         index = self.micro_batch_size * (self.max_length + 1)
-                        self.data.append(data[:index])
-                        data = []
+                        data_slice = data[:index]
+                        self.data.append(data_slice)
+                        data = data[index:]
         return
 
     def get_data(self):
