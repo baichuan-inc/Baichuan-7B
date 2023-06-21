@@ -259,12 +259,12 @@ baichuan-7B 支持商用。如果将 baichuan-7B 模型或其衍生品用作商�
 
 # Third-Party Resources
 
-1. LLaMA Efficient Tuning 支持baichuan-7B使用Qlora进行Finetune，支持RLHF，支持WebDemo。使用经过sft的模型见 hiyouga/baichuan-7b-sft
-2. fireballoon/baichuan-vicuna-chinese-7b 使用 ShareGPT, ShareGPT-ZH, COT & COT-ZH, Leetcode, dummy等包含中英文的数据Finetune后的模型，训练代码参考FastChat。
-3. fireballoon/baichuan-vicuna-7b 使用ShareGPT, COT 和 Leetcode等数据混合Finetune后的模型，训练代码参考FastChat。
-4. Efficient-Tuning-LLMs 支持baichuan-7B使用Qlora进行Finetune和4bit inference。
-5. fastllm fastllm是纯c++实现，无第三方依赖的大模型库，支持baichuan-7B在手机端运行。
-6. TheBloke/baichuan-7B-GPTQ 对baichuan-7B的GPTQ 4bit量化。
+1. [LLaMA Efficient Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) 支持baichuan-7B使用Qlora进行Finetune，支持RLHF，支持WebDemo。使用经过sft的模型见 [hiyouga/baichuan-7b-sft](https://huggingface.co/hiyouga/baichuan-7b-sft)。
+2. [fireballoon/baichuan-vicuna-chinese-7b](https://huggingface.co/fireballoon/baichuan-vicuna-chinese-7b) 使用 ShareGPT, ShareGPT-ZH, COT & COT-ZH, Leetcode, dummy等包含中英文的数据Finetune后的模型，训练代码参考FastChat。
+3. [fireballoon/baichuan-vicuna-7b](https://huggingface.co/fireballoon/baichuan-vicuna-7b) 使用ShareGPT, COT 和 Leetcode等数据混合Finetune后的模型，训练代码参考FastChat。
+4. [Efficient-Tuning-LLMs](https://github.com/jianzhnie/Efficient-Tuning-LLMs) 支持baichuan-7B使用Qlora进行Finetune和4bit inference。
+5. [fastllm](https://github.com/ztxz16/fastllm) fastllm是纯c++实现，无第三方依赖的大模型库，支持baichuan-7B在手机端运行。
+6. [TheBloke/baichuan-7B-GPTQ](https://huggingface.co/TheBloke/baichuan-7B-GPTQ) 对baichuan-7B的GPTQ 4bit量化。
 
 # Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=baichuan-inc/baichuan-7B&type=Date)](https://star-history.com/#baichuan-inc/baichuan-7B&Date)
