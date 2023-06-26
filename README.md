@@ -66,7 +66,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 
 ### Gaokao
-[Gaokao](https://github.com/ExpressAI/AI-Gaokao) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。
+[Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) 是一个以中国高考题作为评测大语言模型能力的数据集，用以评估模型的语言能力和逻辑推理能力。
 我们只保留了其中的单项选择题，随机划分后对所有模型进行统一 5-shot 测试。
 
 ### 结果
