@@ -67,7 +67,7 @@ nohup python  evaluate_zh.py --gpu_idx ${gpu} --model_id ${model_id} --task ${ta
 
 
 ### Gaokao
-[Gaokao](https://github.com/ExpressAI/AI-Gaokao) is an evaluation dataset curated from questions used in Chinese College Entrance Examination, to evaluate the capabilities of large language models, assessing models' language ability and logical reasoning skills. We processed the dataset to only containing single-answer multiple choice questions, we conducted a 5-shot test on all models.
+[Gaokao](https://github.com/OpenLMLab/GAOKAO-Bench) is an evaluation dataset curated from questions used in Chinese College Entrance Examination, to evaluate the capabilities of large language models, assessing models' language ability and logical reasoning skills. We processed the dataset to only containing single-answer multiple choice questions, we conducted a 5-shot test on all models.
 
 ### Results
 
