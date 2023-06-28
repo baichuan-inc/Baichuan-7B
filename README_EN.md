@@ -29,6 +29,26 @@ baichuan-7B is an open-source, large-scale pre-trained language model developed 
 # Benchmark
 
 ## Chinese Benchmarks
+
+### CMMLU
+[CMMLU](https://github.com/haonan-li/CMMLU) is a comprehensive Chinese language models evaluation benchmark, covering 67 topics span from elementary to advanced professional levels. We used the dev set from this dataset as the source for few-shot learning and conducted a 5-shot test on the test set.
+
+### Result
+| Model 5-shot      | STEM | Humanities | Social Science | Other | China-specific | Average |
+|-------------------|------|------------|----------------|-------|----------------|---------|
+| ChatGPT           |   47.81   |   55.68   |   56.50   |   62.66   |   50.69   |   55.51   |
+| Falcon-40B        |   33.33   |   43.46   |   44.28   |   44.75   |   39.46   |   41.45   |
+| LLaMA-65B         |   34.47   |   40.24   |   41.55   |   42.88   |   37.00   |   39.80   |
+| BLOOMZ-7B         |   30.56   |   39.10   |   38.59   |   40.32   |   37.15   |   37.04   |
+| Bactrian-LLaMA-13B|   27.52   |   32.47   |   32.27   |   35.77   |   31.56   |   31.88   |
+| ChatGLM-6B        |   32.35   |   39.22   |   39.65   |   38.62   |   37.70   |   37.48   |
+| BatGPT-15B        |   34.96   |   35.45   |   36.31   |   42.14   |   37.89   |   37.16   |
+| Chinese-LLaMA-13B |   27.12   |   33.18   |   34.87   |   35.10   |   32.97   |   32.63   |
+| MOSS-SFT-16B      |   27.23   |   30.41   |   28.84   |   32.56   |   28.68   |   29.57   |
+| Chinese-GLM-10B   |   25.49   |   27.05   |   27.42   |   29.21   |   28.05   |   27.26   |
+| **baichuan-7B**   |   35.25   |   48.07   |   47.88   |   46.61   |   44.14   |   44.43   |
+
+
 ### C-Eval
 [C-Eval](https://cevalbenchmark.com/index.html) is a comprehensive Chinese language models evaluation dataset, covering 52 subjects and four levels of difficulty. We used the dev set from this dataset as the source for few-shot learning and conducted a 5-shot test on the test set.
 
