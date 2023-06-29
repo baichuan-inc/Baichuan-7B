@@ -4,7 +4,7 @@ import torch
 import numpy as np
 import pandas as pd
 from categories import subcategories, categories
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer,AutoModelForCausalLM
+from transformers import AutoTokenizer,AutoModelForCausalLM
 import time
 choices = ["A", "B", "C", "D"]
 
