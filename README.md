@@ -3,28 +3,28 @@
 
 <div align="center">
 <h1>
-  baichuan-7B
+  Baichuan-7B
 </h1>
 </div>
 
 <p align="center">
-🤗 <a href="https://huggingface.co/baichuan-inc/baichuan-7B" target="_blank">Hugging Face</a> • 🤖 <a href="https://modelscope.cn/organization/baichuan-inc" target="_blank">ModelScope</a> • 💬 <a href="https://github.com/baichuan-inc/baichuan-7B/blob/main/media/wechat.jpeg?raw=true" target="_blank">WeChat</a>
+🤗 <a href="https://huggingface.co/baichuan-inc/Baichuan-7B" target="_blank">Hugging Face</a> • 🤖 <a href="https://modelscope.cn/organization/baichuan-inc" target="_blank">ModelScope</a> • 💬 <a href="https://github.com/baichuan-inc/Baichuan-7B/blob/main/media/wechat.jpeg?raw=true" target="_blank">WeChat</a>
 </p>
 
 <div align="center">
 
-[![license](https://img.shields.io/github/license/modelscope/modelscope.svg)](https://github.com/baichuan-inc/baichuan-7B/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/modelscope/modelscope.svg)](https://github.com/baichuan-inc/Baichuan-7B/blob/main/LICENSE)
 <h4 align="center">
     <p>
         <b>中文</b> |
-        <a href="https://github.com/baichuan-inc/baichuan-7B/blob/main/README_EN.md">English</a>
+        <a href="https://github.com/baichuan-inc/Baichuan-7B/blob/main/README_EN.md">English</a>
     <p>
 </h4>
 </div>
 
 # 介绍
 
-baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约 1.2 万亿 tokens 上训练的 70 亿参数模型，支持中英双语，上下文窗口长度为 4096。在标准的中文和英文 benchmark（C-Eval/MMLU）上均取得同尺寸最好的效果。
+Baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约 1.2 万亿 tokens 上训练的 70 亿参数模型，支持中英双语，上下文窗口长度为 4096。在标准的中文和英文 benchmark（C-Eval/MMLU）上均取得同尺寸最好的效果。
 
 # 公开benchmark榜单
 
@@ -57,7 +57,7 @@ python evaluate_zh.py --model_name_or_path 'your/model/path'
 |    Aquila-7B<sup>*</sup>    |  25.5   |   25.2    | 25.6  |      24.6       |    25.2    |  26.6  |
 | Open-LLaMA-v2-pretrain (7B) |  24.0   |   22.5    | 23.1  |      25.3       |    25.2    |  23.2  |
 |          BLOOM-7B           |  22.8   |   20.2    | 21.8  |      23.3       |    23.9    |  23.3  |
-|       **baichuan-7B**       |  42.8   |   31.5    | 38.2  |      52.0       |    46.2    |  39.3  |
+|       **Baichuan-7B**       |  42.8   |   31.5    | 38.2  |      52.0       |    46.2    |  39.3  |
 
 ### Gaokao
 
@@ -79,7 +79,7 @@ python evaluate_zh.py --model_name_or_path 'your/model/path'
 |       ChatGLM-6B        |   21.41   |
 | Open-LLaMA-v2-pretrain  |   21.41   |
 |  Aquila-7B<sup>*</sup>  |   24.39   |
-|     **baichuan-7B**     | **36.24** |
+|     **Baichuan-7B**     | **36.24** |
 
 ### AGIEval
 
@@ -99,13 +99,13 @@ python evaluate_zh.py --model_name_or_path 'your/model/path'
 |    TigerBot-7B-base     |   25.19   |
 |       ChatGLM-6B        |   23.49   |
 | Open-LLaMA-v2-pretrain  |   23.49   |
-|     **baichuan-7B**     | **34.44** |
+|     **Baichuan-7B**     | **34.44** |
 
 <sup>*</sup>其中 Aquila 模型来源于智源官方网站(<https://model.baai.ac.cn/model-detail/100098>) 仅做参考
 
 ## 英文榜单
 
-除了中文之外，baichuan-7B也测试了模型在英文上的效果，[MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个多选任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test) 的评测方案，最终 `5-shot` 结果如下所示：
+除了中文之外，Baichuan-7B也测试了模型在英文上的效果，[MMLU](https://arxiv.org/abs/2009.03300) 是包含 57 个多选任务的英文评测数据集，涵盖了初等数学、美国历史、计算机科学、法律等，难度覆盖高中水平到专家水平，是目前主流的LLM评测数据集。我们采用了[开源](https://github.com/hendrycks/test) 的评测方案，最终 `5-shot` 结果如下所示：
 
 ### 结果
 
@@ -119,7 +119,7 @@ python evaluate_zh.py --model_name_or_path 'your/model/path'
 | moss-moon-003-sft (16B)<sup>0</sup>  |    30.5    |      33.8       |   29.3   |   34.4   |   31.9   |
 |         BLOOM-7B<sup>0</sup>         |    25.0    |      24.4       |   26.5   |   26.4   |   25.5   |
 | moss-moon-003-base (16B)<sup>0</sup> |    24.2    |      22.8       |   22.4   |   24.4   |   23.6   |
-|     **baichuan-7B<sup>0</sup>**      |  **38.4**  |    **48.9**     | **35.6** | **48.1** | **42.3** |
+|     **Baichuan-7B<sup>0</sup>**      |  **38.4**  |    **48.9**     | **35.6** | **48.1** | **42.3** |
 
 <sup>0: 重新复现</sup><br/>
 <sup>1: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard</sup><br/>
@@ -134,7 +134,7 @@ wget https://people.eecs.berkeley.edu/~hendrycks/data.tar
 tar xf data.tar
 mkdir results
 cp ../evaluate_mmlu.py .
-python evaluate_mmlu.py -m /path/to/baichuan-7b
+python evaluate_mmlu.py -m /path/to/Baichuan-7B
 ```
 
 其中在 MMLU 上57个任务的具体细指标如下图：
@@ -149,13 +149,13 @@ python evaluate_mmlu.py -m /path/to/baichuan-7b
 
 # 推理方法
 
-推理代码已经在[官方 Huggingface 库](https://huggingface.co/baichuan-inc/baichuan-7B)
+推理代码已经在[官方 Huggingface 库](https://huggingface.co/baichuan-inc/Baichuan-7B)
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/baichuan-7B", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("baichuan-inc/baichuan-7B", device_map="auto", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("baichuan-inc/Baichuan-7B", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("baichuan-inc/Baichuan-7B", device_map="auto", trust_remote_code=True)
 inputs = tokenizer('登鹳雀楼->王之涣\n夜雨寄北->', return_tensors='pt')
 inputs = inputs.to('cuda:0')
 pred = model.generate(**inputs, max_new_tokens=64,repetition_penalty=1.1)
@@ -187,7 +187,7 @@ print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
 3. 对于罕见字词（如特殊符号等），支持 UTF-8 characters 的 byte 编码，因此做到未知字词的全覆盖。
 4. 我们分析了不同分词器对语料的压缩率，如下表，可见我们的分词器明显优于 LLaMA, Falcon 等开源模型，并且对比其他中文分词器在压缩率相当的情况下，训练和推理效率更高。
 
-|     Model     | baichuan-7B | LLaMA  | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
+|     Model     | Baichuan-7B | LLaMA  | Falcon | mpt-7B | ChatGLM | moss-moon-003 |
 | :-----------: | :---------: | :----: | :----: | :----: | :-----: | :-----------: |
 | Compress Rate |    0.737    | 1.312  | 1.049  | 1.206  |  0.631  |     0.659     |
 |  Vocab Size   |   64,000    | 32,000 | 65,024 | 50,254 | 130,344 |    106,029    |
@@ -239,7 +239,7 @@ pip install -r requirements.txt
 
 ## 下载 tokenizer 模型
 
-下载 tokenizer 模型文件 [tokenizer.model](https://huggingface.co/baichuan-inc/baichuan-7B/blob/main/tokenizer.model) ，放置在项目目录下。
+下载 tokenizer 模型文件 [tokenizer.model](https://huggingface.co/baichuan-inc/Baichuan-7B/blob/main/tokenizer.model) ，放置在项目目录下。
 
 ## 配置 DeepSpeed
 
@@ -253,19 +253,19 @@ scripts/train.sh
 
 # 协议
 
-对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/baichuan-7B/blob/main/LICENSE)。
+对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan-7B/blob/main/LICENSE)。
 
-baichuan-7B 支持商用。如果将 baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：<opensource@baichuan-inc.com>， 具体许可协议可见[《baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
+Baichuan-7B 支持商用。如果将 Baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：<opensource@baichuan-inc.com>， 具体许可协议可见[《Baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/Baichuan-7B/resolve/main/Baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
 
 # Third-Party Resources
 
-1. [LLaMA Efficient Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) 支持baichuan-7B使用Qlora进行Finetune，支持RLHF，支持WebDemo。使用经过sft的模型见 [hiyouga/baichuan-7b-sft](https://huggingface.co/hiyouga/baichuan-7b-sft)。
+1. [LLaMA Efficient Tuning](https://github.com/hiyouga/LLaMA-Efficient-Tuning) 支持Baichuan-7B使用Qlora进行Finetune，支持RLHF，支持WebDemo。使用经过sft的模型见 [hiyouga/baichuan-7b-sft](https://huggingface.co/hiyouga/baichuan-7b-sft)。
 2. [fireballoon/baichuan-vicuna-chinese-7b](https://huggingface.co/fireballoon/baichuan-vicuna-chinese-7b) 使用 ShareGPT, ShareGPT-ZH, COT & COT-ZH, Leetcode, dummy等包含中英文的数据Finetune后的模型，训练代码参考FastChat。
 3. [fireballoon/baichuan-vicuna-7b](https://huggingface.co/fireballoon/baichuan-vicuna-7b) 使用ShareGPT, COT 和 Leetcode等数据混合Finetune后的模型，训练代码参考FastChat。
-4. [Efficient-Tuning-LLMs](https://github.com/jianzhnie/Efficient-Tuning-LLMs) 支持baichuan-7B使用Qlora进行Finetune和4bit inference。
-5. [fastllm](https://github.com/ztxz16/fastllm) fastllm是纯c++实现，无第三方依赖的大模型库，支持baichuan-7B在手机端运行。
-6. [TheBloke/baichuan-7B-GPTQ](https://huggingface.co/TheBloke/baichuan-7B-GPTQ) 对baichuan-7B的GPTQ 4bit量化。
+4. [Efficient-Tuning-LLMs](https://github.com/jianzhnie/Efficient-Tuning-LLMs) 支持Baichuan-7B使用Qlora进行Finetune和4bit inference。
+5. [fastllm](https://github.com/ztxz16/fastllm) fastllm是纯c++实现，无第三方依赖的大模型库，支持Baichuan-7B在手机端运行。
+6. [TheBloke/baichuan-7B-GPTQ](https://huggingface.co/TheBloke/baichuan-7B-GPTQ) 对Baichuan-7B的GPTQ 4bit量化。
 
 # Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=baichuan-inc/baichuan-7B&type=Date)](https://star-history.com/#baichuan-inc/baichuan-7B&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=baichuan-inc/Baichuan-7B&type=Date)](https://star-history.com/#baichuan-inc/Baichuan-7B&Date)
