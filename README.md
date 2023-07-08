@@ -255,7 +255,7 @@ scripts/train.sh
 
 对本仓库源码的使用遵循开源许可协议 [Apache 2.0](https://github.com/baichuan-inc/Baichuan-7B/blob/main/LICENSE)。
 
-Baichuan-7B 支持商用。如果将 Baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：<opensource@baichuan-inc.com>， 具体许可协议可见[《Baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/Baichuan-7B/resolve/main/Baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
+Baichuan-7B 支持商用。如果将 Baichuan-7B 模型或其衍生品用作商业用途，请您按照如下方式联系许可方，以进行登记并向许可方申请书面授权：联系邮箱：<opensource@baichuan-inc.com>， 具体许可协议可见[《Baichuan-7B 模型许可协议》](https://huggingface.co/baichuan-inc/Baichuan-7B/resolve/main/baichuan-7B%20%E6%A8%A1%E5%9E%8B%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf)。
 
 # Third-Party Resources
 
