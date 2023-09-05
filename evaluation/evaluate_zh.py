@@ -134,22 +134,24 @@ class CEval:
                     prompt += "\n" + self.build_example(shuffled[i], with_answer=True)
             prompt += "\n" + self.build_example(data, with_answer=False)
             input_ids = self.tokenizer.encode(prompt, return_tensors="pt").cuda()
-            output = self.model.generate(
-                input_ids,
-                max_new_tokens=1,
-                return_dict_in_generate=True,
-                output_scores=True,
-                temperature=0.1,
-                top_p=0.5,
-                repetition_penalty=1.1,
+
+            logits = self.model(
+                    input_ids=input_ids,
+                ).logits[:,-1].flatten()
+
+            candidate_logits = [logits[self.tokenizer(label).input_ids[-1]] for label in ["A", "B", "C", "D"]]
+            candidate_logits = torch.tensor(candidate_logits).to(torch.float32)
+            probs = (
+                torch.nn.functional.softmax(
+                    candidate_logits,
+                    dim=0,
+                )
+                .detach()
+                .cpu()
+                .numpy()
             )
-            scores = output.scores[0][0].to(torch.float32)
-            label_score = []
-            candidates = ["A", "B", "C", "D"]
-            for can in candidates:
-                can_id = self.tokenizer.encode(can)[-1]
-                label_score.append(scores[can_id].item())
-            answer = candidates[np.argmax(label_score)]
+            answer = {i: k for i, k in enumerate(["A", "B", "C", "D"])}[np.argmax(probs)]
+
             results.append(
                 {
                     "prompt": prompt,
