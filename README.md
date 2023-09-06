@@ -22,6 +22,9 @@
 </h4>
 </div>
 
+# 更新信息
+- [2023.09.06] 我们发布了新一代开源模型 [Baichuan 2](https://github.com/baichuan-inc/Baichuan2)，包含 7B、13B 尺寸 🔥🔥🔥
+
 # 介绍
 
 Baichuan-7B 是由百川智能开发的一个开源可商用的大规模预训练语言模型。基于 Transformer 结构，在大约 1.2 万亿 tokens 上训练的 70 亿参数模型，支持中英双语，上下文窗口长度为 4096。在标准的中文和英文 benchmark（C-Eval/MMLU）上均取得同尺寸最好的效果。
