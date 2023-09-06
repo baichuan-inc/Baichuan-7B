@@ -165,6 +165,8 @@ pred = model.generate(**inputs, max_new_tokens=64,repetition_penalty=1.1)
 print(tokenizer.decode(pred.cpu()[0], skip_special_tokens=True))
 
 ```
+## 轻量化部署
+baichuan 支持本地轻量化部署，将模型量化为 int4，可以在本地 CPU，移动端 CPU 进行实时部署，具体参见 [InferLLM](https://github.com/MegEngine/InferLLM/blob/main/application/baichuan/Readme.md)。
 
 # 数据
 
