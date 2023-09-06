@@ -11,8 +11,13 @@
 🤗 <a href="https://huggingface.co/baichuan-inc/Baichuan-7B" target="_blank">Hugging Face</a> • 🤖 <a href="https://modelscope.cn/organization/baichuan-inc" target="_blank">ModelScope</a> • 💬 <a href="https://github.com/baichuan-inc/Baichuan-7B/blob/main/media/wechat.jpeg?raw=true" target="_blank">WeChat</a>
 </p>
 
+<div align="center">
+  
 [![license](https://img.shields.io/github/license/modelscope/modelscope.svg)](https://github.com/baichuan-inc/Baichuan-7B/blob/main/LICENSE)
 [![evaluation](https://img.shields.io/badge/OpenCompass-Support-royalblue.svg)](https://github.com/internLM/OpenCompass/)
+
+</div>
+
 <h4 align="center">
     <p>
         <b>English</b> |
